@@ -1,9 +1,23 @@
-const translations = {
+interface Translation {
+  [key: string]: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+}
+
+const translations: Translation = {
   es: {
-    name: 'Español',
+    navbar: {
+      buyByDepartment: 'Comprar por categoría',
+      cart: 'Carrito',
+    },
   },
   en: {
-    name: 'English',
+    navbar: {
+      buyByDepartment: 'Shop by department',
+      cart: 'Cart',
+    },
   },
 };
 

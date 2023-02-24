@@ -6,6 +6,9 @@ const nextConfig = {
     localeDetection: false,
   },
   reactStrictMode: true,
+  images: {
+    remotePatterns: [{ hostname: 'placeimg.com' }],
+  },
 };
 
 module.exports = nextConfig;
