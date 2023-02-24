@@ -22,5 +22,4 @@ npm install
 npm run dev
 ```
 
-
 The server will start at [http://localhost:3000](http://localhost:3000).
