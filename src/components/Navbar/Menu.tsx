@@ -1,12 +1,33 @@
+import { useClient } from '@/store/ShopStore';
 import useTranslation from '@/utils/i18n/hooks';
 import { useEffect, useRef, useState } from 'react';
 import Bars3 from '../Icons/Bars3';
 import XMark from '../Icons/XMark';
 
+function CategoryListItem({ category }: { category: Category }) {
+  return (
+    <>
+      <hr />
+      <li className="my-2 truncate">{category.name}</li>
+    </>
+  );
+}
+
 export default function Menu() {
   const t = useTranslation;
   const menuDiv = useRef<HTMLDivElement>(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  const { client } = useClient();
+
+  useEffect(() => {
+    async function getCategories() {
+      const categories = await client.fetch(`*[_type == "category"]`);
+      setCategories(categories);
+    }
+    getCategories();
+  }, [client]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
@@ -38,8 +59,9 @@ export default function Menu() {
             <div>
               <h2 className="text-xl mb-3 font-medium">{t('navbar', 'buyByDepartment')}</h2>
               <ul>
-                <hr />
-                {/* TODO: Complete menu */}
+                {categories.map((category: Category) => (
+                  <CategoryListItem key={category._id} category={category} />
+                ))}
               </ul>
             </div>
           </div>
@@ -52,3 +74,12 @@ export default function Menu() {
     </div>
   );
 }
+
+type Category = {
+  name: string;
+  _createdAt: string;
+  _id: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: string;
+};
