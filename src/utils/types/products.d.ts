@@ -1,4 +1,4 @@
-export default interface Product {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -10,4 +10,4 @@ export default interface Product {
     image: string;
   };
   images: string[];
-}
+};
