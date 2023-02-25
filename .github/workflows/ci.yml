@@ -34,6 +34,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test
+        env:
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
         run: npm run test
   build:
     runs-on: ubuntu-20.04
@@ -49,4 +51,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
+        env:
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
         run: npm run build
