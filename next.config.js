@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     remotePatterns: [{ hostname: 'placeimg.com' }],
   },
+  env: {
+    SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
+  },
 };
 
 module.exports = nextConfig;
