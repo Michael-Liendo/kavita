@@ -7,7 +7,8 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    remotePatterns: [{ hostname: 'placeimg.com' }],
+    //TODO: Remove this
+    remotePatterns: [{ hostname: '*' }],
   },
   env: {
     SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
