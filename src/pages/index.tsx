@@ -29,6 +29,7 @@ export default function Home() {
     getBanners();
   }, [client]);
 
+  // TODO: FUNCIONAL LINKS OF BANNERS
   return (
     <>
       <Navbar />
