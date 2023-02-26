@@ -48,7 +48,7 @@ export default function Layout({
         <meta name="copyright" content="Michael Liendo" />
       </Head>
       <Navbar />
-      <main className="mx-8 lg:mx-28 xl:mx-40 2xl:mx-60 min-h-[82vh]">{children}</main>
+      <main className="mx-4 sm:mx-10 lg:mx-28 xl:mx-16 2xl:mx-60 min-h-[82vh]">{children}</main>
       <Footer />
     </>
   );
