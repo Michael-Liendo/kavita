@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import { useClient } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -29,7 +30,6 @@ export default function Home() {
     getBanners();
   }, [client]);
 
-  // TODO: FUNCIONAL LINKS OF BANNERS
   return (
     <>
       <Navbar />
@@ -40,7 +40,7 @@ export default function Home() {
               {banners && (
                 <Image
                   className="rounded-lg h-full object-cover"
-                  src={banners?.head_main_banners?.banners_mobile[0] || ''}
+                  src={banners?.head_main_banners?.banners_mobile[0].banner || ''}
                   alt="s"
                   width="1000"
                   height="1000"
@@ -49,23 +49,23 @@ export default function Home() {
             </a>
           </div>
           <div className="hidden md:flex flex-row mt-6 space-x-5">
-            <a href="#" className="bg-slate-400 min-w-[5rem] h-53">
-              {banners && (
+            {banners && (
+              <Link href={banners.head_main_banners.banners_computer[0].link} className="h-53">
                 <Image
                   className="rounded-lg w-full h-full object-cover"
-                  src={banners?.head_main_banners?.banners_computer[0] || ''}
+                  src={banners?.head_main_banners?.banners_computer[0].banner}
                   alt="s"
                   width="1000"
                   height="1000"
                 />
-              )}
-            </a>
+              </Link>
+            )}
             <div className="flex-col max-w-[50%] h-full">
               <div className="w-full h-25">
                 <h3 className="mb-3 text-xl font-medium">Week selection</h3>
                 <div className="flex space-x-3 md:space-x-7 lg:space-x-5 xl:space-x-7">
                   {productWeekSelection?.map((product: Product) => (
-                    <a href="#" className="w-[22%]" key={product._id}>
+                    <Link href={`/product/${product._id}`} className="w-[22%]" key={product._id}>
                       <Image
                         className="rounded-md h-[75%] mb-2 object-cover"
                         alt={product.description}
@@ -73,34 +73,34 @@ export default function Home() {
                         width={208}
                         height={208}
                       />
-                      <h2 className="truncate">{product.title}</h2>
-                    </a>
+                      <h2 className="truncate text-blue-600">{product.title}</h2>
+                    </Link>
                   ))}
                 </div>
               </div>
               <div className="hidden sm:flex h-72 mt-3">
-                <a href="#" className="mr-1 bg-slate-400 w-6/12">
-                  {banners && (
+                {banners && (
+                  <Link href={banners.head_main_banners.banners_computer[1].link} className="mr-1">
                     <Image
                       className="rounded-lg w-full h-full object-cover"
-                      src={banners?.head_main_banners?.banners_computer[1] || ''}
+                      src={banners?.head_main_banners?.banners_computer[1].banner}
                       alt="s"
                       width="1000"
                       height="1000"
                     />
-                  )}
-                </a>
-                <a href="#" className="ml-1 bg-slate-400 w-6/12">
-                  {banners && (
+                  </Link>
+                )}
+                {banners && (
+                  <Link href={banners.head_main_banners.banners_computer[2].link} className="ml-1">
                     <Image
                       className="rounded-sm w-full h-full object-cover"
-                      src={banners?.head_main_banners?.banners_computer[2] || ''}
+                      src={banners?.head_main_banners?.banners_computer[2].banner}
                       alt="s"
                       width="1000"
                       height="1000"
                     />
-                  )}
-                </a>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -115,11 +115,19 @@ type MainBanners = {
   _id: string;
   _rev: string;
   _type: string;
-  _updatedAt: string;
   head_main_banners: {
-    banners_computer: string[];
-    banners_mobile: string[];
+    banners_computer: {
+      _key: string;
+      banner: string;
+      link: string;
+    }[];
+    banners_mobile: {
+      _key: string;
+      banner: string;
+      link: string;
+    }[];
   };
+  _updatedAt: string;
 };
 
 type ProductWeekSelection = {
