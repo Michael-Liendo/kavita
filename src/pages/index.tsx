@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar/Navbar';
+import Layout from '@/components/Layout';
 import { useClient } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
@@ -31,82 +31,79 @@ export default function Home() {
   }, [client]);
 
   return (
-    <>
-      <Navbar />
-      <main className="mx-8 lg:mx-28 xl:mx-40 2xl:mx-60">
-        <div>
-          <div className="flex md:hidden mt-4">
-            <a href="#" className="bg-slate-400 h-72">
-              {banners && (
-                <Image
-                  className="rounded-lg h-full object-cover"
-                  src={banners?.head_main_banners?.banners_mobile[0].banner || ''}
-                  alt="s"
-                  width="1000"
-                  height="1000"
-                />
-              )}
-            </a>
-          </div>
-          <div className="hidden md:flex flex-row mt-6 space-x-5">
+    <Layout title="Kevita | Home Page">
+      <div>
+        <div className="flex md:hidden mt-4">
+          <a href="#" className="bg-slate-400 h-72">
             {banners && (
-              <Link href={banners.head_main_banners.banners_computer[0].link} className="h-53">
-                <Image
-                  className="rounded-lg w-full h-full object-cover"
-                  src={banners?.head_main_banners?.banners_computer[0].banner}
-                  alt="s"
-                  width="1000"
-                  height="1000"
-                />
-              </Link>
+              <Image
+                className="rounded-lg h-full object-cover"
+                src={banners?.head_main_banners?.banners_mobile[0].banner || ''}
+                alt="s"
+                width="1000"
+                height="1000"
+              />
             )}
-            <div className="flex-col max-w-[50%] h-full">
-              <div className="w-full h-25">
-                <h3 className="mb-3 text-xl font-medium">Week selection</h3>
-                <div className="flex space-x-3 md:space-x-7 lg:space-x-5 xl:space-x-7">
-                  {productWeekSelection?.map((product: Product) => (
-                    <Link href={`/product/${product._id}`} className="w-[22%]" key={product._id}>
-                      <Image
-                        className="rounded-md h-[75%] mb-2 object-cover"
-                        alt={product.description}
-                        src={product.images[0]}
-                        width={208}
-                        height={208}
-                      />
-                      <h2 className="truncate text-blue-600">{product.title}</h2>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden sm:flex h-72 mt-3">
-                {banners && (
-                  <Link href={banners.head_main_banners.banners_computer[1].link} className="mr-1">
+          </a>
+        </div>
+        <div className="hidden md:flex flex-row mt-6 space-x-5">
+          {banners && (
+            <Link href={banners.head_main_banners.banners_computer[0].link} className="h-53">
+              <Image
+                className="rounded-lg w-full h-full object-cover"
+                src={banners?.head_main_banners?.banners_computer[0].banner}
+                alt="s"
+                width="1000"
+                height="1000"
+              />
+            </Link>
+          )}
+          <div className="flex-col max-w-[50%] h-full">
+            <div className="w-full h-25">
+              <h3 className="mb-3 text-xl font-medium">Week selection</h3>
+              <div className="flex space-x-3 md:space-x-7 lg:space-x-5 xl:space-x-7">
+                {productWeekSelection?.map((product: Product) => (
+                  <Link href={`/product/${product._id}`} className="w-[22%]" key={product._id}>
                     <Image
-                      className="rounded-lg w-full h-full object-cover"
-                      src={banners?.head_main_banners?.banners_computer[1].banner}
-                      alt="s"
-                      width="1000"
-                      height="1000"
+                      className="rounded-md h-[75%] mb-2 object-cover"
+                      alt={product.description}
+                      src={product.images[0]}
+                      width={208}
+                      height={208}
                     />
+                    <h2 className="truncate text-blue-600">{product.title}</h2>
                   </Link>
-                )}
-                {banners && (
-                  <Link href={banners.head_main_banners.banners_computer[2].link} className="ml-1">
-                    <Image
-                      className="rounded-sm w-full h-full object-cover"
-                      src={banners?.head_main_banners?.banners_computer[2].banner}
-                      alt="s"
-                      width="1000"
-                      height="1000"
-                    />
-                  </Link>
-                )}
+                ))}
               </div>
+            </div>
+            <div className="hidden sm:flex h-72 mt-3">
+              {banners && (
+                <Link href={banners.head_main_banners.banners_computer[1].link} className="mr-1">
+                  <Image
+                    className="rounded-lg w-full h-full object-cover"
+                    src={banners?.head_main_banners?.banners_computer[1].banner}
+                    alt={banners?.head_main_banners?.banners_computer[1].link}
+                    width="1000"
+                    height="1000"
+                  />
+                </Link>
+              )}
+              {banners && (
+                <Link href={banners.head_main_banners.banners_computer[2].link} className="ml-1">
+                  <Image
+                    className="rounded-sm w-full h-full object-cover"
+                    src={banners?.head_main_banners?.banners_computer[2].banner}
+                    alt={banners?.head_main_banners?.banners_computer[2].link}
+                    width="1000"
+                    height="1000"
+                  />
+                </Link>
+              )}
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </Layout>
   );
 }
 
