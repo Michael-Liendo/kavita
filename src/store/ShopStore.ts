@@ -23,7 +23,7 @@ export const useCart = create<CartState>((set, get) => ({
   addProduct: (product: Product) => {
     const { cart } = get();
 
-    const index = cart.findIndex(({ id }: { id: number }) => id === product.id);
+    const index = cart.findIndex(({ _id }: { _id: string }) => _id === product._id);
 
     if (index < 0) {
       set({ cart: [...cart, product] });
@@ -38,10 +38,10 @@ export const useCart = create<CartState>((set, get) => ({
       cart: cart.filter((value, index) => index !== productIndex),
     });
   },
-  decrementQuantity: (product) => {
+  decrementQuantity: (product: Product) => {
     const { cart, removeProduct } = get();
 
-    const index = cart.findIndex(({ id }) => id === product.id);
+    const index = cart.findIndex(({ _id }) => _id === product._id);
 
     if (index < 0) {
       set({ cart: [...cart, product] });

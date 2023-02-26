@@ -4,7 +4,7 @@ import { useCart } from '../store/ShopStore';
 
 describe('useCart', () => {
   const product1: Product = {
-    id: 1,
+    _id: 'ting',
     title: 'Product 1',
     price: 10,
     quantity: 0,
@@ -13,7 +13,7 @@ describe('useCart', () => {
     category: { id: 1, image: '', name: 'text' },
   };
   const product2: Product = {
-    id: 2,
+    _id: 'test',
     title: 'Product 2',
     price: 20,
     quantity: 0,
