@@ -65,7 +65,7 @@ export default function Cart() {
             </span>
           ) : null}
         </div>
-        <span className="hidden hover:underline md:block">{t('navbar', 'useCartState')}</span>
+        <span className="hidden hover:underline md:block">{t('navbar', 'cart')}</span>
       </button>
 
       {bagIsOpen && (
