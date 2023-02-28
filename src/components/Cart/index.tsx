@@ -5,13 +5,19 @@ import { useCart } from '../../store/ShopStore';
 import ShoppingCart from '../Icons/ShoppingCart';
 import ProductCart from './Product';
 import useTranslation from '@/utils/i18n/hooks';
+import { Product } from '@/utils/types/products';
 
 export default function Cart() {
   const t = useTranslation;
   const carDiv = useRef<HTMLDivElement>(null);
 
   const [bagIsOpen, setBagIsOpen] = useState(false);
-  const { cart, cartAnimated } = useCart();
+  const [useCartState, setUseCartState] = useState<Product[]>([]);
+  const { cart } = useCart();
+
+  useEffect(() => {
+    setUseCartState(cart);
+  }, [cart]);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
@@ -27,12 +33,12 @@ export default function Cart() {
     };
   }, [bagIsOpen]);
 
-  const cartTotal = cart.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity,
+  const cartTotal = useCartState.reduce(
+    (accumulator: number, product: Product) => accumulator + product.price * product.quantity,
     0,
   );
-  const cartTotalItems = cart.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.quantity,
+  const cartTotalItems = useCartState.reduce(
+    (accumulator: number, product: Product) => accumulator + product.quantity,
     0,
   );
   useEffect(() => {
@@ -46,39 +52,37 @@ export default function Cart() {
   return (
     <div ref={carDiv} className="flex items-center">
       <button
-        className={cn('flex text-xl items-center  transition duration-200 cursor-pointer', {
-          'scale-110': cartAnimated,
-        })}
+        className={cn('flex text-xl items-center  transition duration-200 cursor-pointer')}
         onClick={() => {
           setBagIsOpen(!bagIsOpen);
         }}
       >
         <div className="flex -space-x-3 ">
           <ShoppingCart className="text-white w-7 h-7 md:w-10 md:h-10" />
-          {cart.length ? (
+          {useCartState.length ? (
             <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full dark:bg-gray-700">
-              {cart.length}
+              {useCartState.length}
             </span>
           ) : null}
         </div>
-        <span className="hidden hover:underline md:block">{t('navbar', 'cart')}</span>
+        <span className="hidden hover:underline md:block">{t('navbar', 'useCartState')}</span>
       </button>
 
       {bagIsOpen && (
         <>
           <div
-            id="cart"
+            id="useCartState"
             className="text-black fixed z-50 top-16 right-2 bg-white p-3 shadow-lg w-72 sm:w-80"
           >
             <div className="overflow-y-scroll w-80 h-80">
-              {cart.map((product, index) => {
-                return <ProductCart key={product.id} index={index} product={product} />;
-              })}
+              {useCartState.map((product: Product, index: number) => (
+                <ProductCart key={product._id} index={index} product={product} />
+              ))}
             </div>
             <div className="flex justify-between items-center">
               <div className="mt-3 flex flex-col">
                 <span className="text-xs">
-                  {cartTotalItems} item{cart.length === 1 ? '' : 's'}
+                  {cartTotalItems} item{useCartState.length === 1 ? '' : 's'}
                 </span>
                 <span className="font-medium mt-1">
                   ${cartTotal < 1 ? '0.00' : cartTotal.toFixed(2)}
