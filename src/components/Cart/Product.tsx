@@ -7,7 +7,7 @@ type Product = {
   title: string;
   price: number;
   description: string;
-  quantity: number;
+  quantity?: number;
   category: {
     id: number;
     name: string;
@@ -33,7 +33,9 @@ export default function ProductCart({ product, index }: { product: Product; inde
 
       <div className="flex justify-between w-full ml-3">
         <div className="flex flex-col">
-          <span className="text-xs text-gray-500">{product.title}</span>
+          <span title={product.title} className="text-xs w-40 truncate text-gray-500">
+            {product.title}
+          </span>
           <span className="text-sm">${product.price}</span>
           <div className="flex flex-row h-8 w-1/2 rounded-lg relative bg-transparent mt-1">
             <button

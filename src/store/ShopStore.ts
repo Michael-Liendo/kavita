@@ -26,7 +26,7 @@ export const useCart = create<CartState>((set, get) => ({
     const index = cart.findIndex(({ _id }: { _id: string }) => _id === product._id);
 
     if (index < 0) {
-      set({ cart: [...cart, product] });
+      set({ cart: [...cart, { ...product, quantity: 1 }] });
     } else {
       cart[index].quantity += 1;
       set({ cart: cart });

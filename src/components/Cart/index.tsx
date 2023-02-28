@@ -68,11 +68,13 @@ export default function Cart() {
             })}
           </div>
           <div className="flex justify-between items-center">
-            <div className="mt-3 flex flex-col items-center">
+            <div className="mt-3 flex flex-col">
               <span className="text-xs">
                 {cartTotalItems} item{cart.length === 1 ? '' : 's'}
               </span>
-              <span className="font-medium mt-1"> ${cartTotal < 1 ? '0.00' : cartTotal}</span>
+              <span className="font-medium mt-1">
+                ${cartTotal < 1 ? '0.00' : cartTotal.toFixed(2)}
+              </span>
             </div>
             <Link
               href="/checkout"
