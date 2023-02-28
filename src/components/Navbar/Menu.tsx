@@ -43,6 +43,12 @@ export default function Menu() {
     };
   }, [menuIsOpen]);
 
+  if (menuIsOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+
   return (
     <div ref={menuDiv}>
       <button onClick={() => setMenuIsOpen(!menuIsOpen)} className="flex p-1 items-center text-xl">

@@ -36,6 +36,12 @@ export default function Cart() {
     0,
   );
 
+  if (bagIsOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+
   return (
     <div ref={carDiv} className="flex items-center">
       <button
