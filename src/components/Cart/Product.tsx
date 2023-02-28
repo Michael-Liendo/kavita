@@ -1,20 +1,7 @@
 import Image from 'next/image';
 import Trash from '../Icons/Trash';
 import { useCart } from '../../store/ShopStore';
-
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  quantity?: number;
-  category: {
-    id: number;
-    name: string;
-    image: string;
-  };
-  images: string[];
-};
+import { Product } from '@/utils/types/products';
 
 export default function ProductCart({ product, index }: { product: Product; index: number }) {
   const { removeProduct, addProduct, decrementQuantity } = useCart();
