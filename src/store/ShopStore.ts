@@ -2,7 +2,7 @@ import { CartState } from '@/utils/types/cartState';
 import { Product } from '@/utils/types/products';
 import { createClient } from 'next-sanity';
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 
 export const useClient = create(() => ({
   client: createClient({
