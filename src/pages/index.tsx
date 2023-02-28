@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import NewArrivals from '@/components/NewArrivals';
 import { useClient } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
@@ -103,6 +104,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <NewArrivals />
     </Layout>
   );
 }

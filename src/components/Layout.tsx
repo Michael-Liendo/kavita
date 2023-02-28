@@ -18,7 +18,7 @@ export default function Layout({
   image?: string;
   type?: string;
   keywords?: string;
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }) {
   return (
     <>
