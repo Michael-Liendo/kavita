@@ -39,18 +39,22 @@ export default function Cart() {
   return (
     <div ref={carDiv} className="flex items-center">
       <button
-        className={cn(
-          'flex text-xl items-center hover:underline transition duration-200 cursor-pointer',
-          {
-            'scale-110': cartAnimated,
-          },
-        )}
+        className={cn('flex text-xl items-center  transition duration-200 cursor-pointer', {
+          'scale-110': cartAnimated,
+        })}
         onClick={() => {
           setBagIsOpen(!bagIsOpen);
         }}
       >
-        <ShoppingCart className="text-white w-7 h-7 md:w-10 md:h-10" />
-        <span className="hidden md:block">{t('navbar', 'cart')}</span>
+        <div className="flex -space-x-3 ">
+          <ShoppingCart className="text-white w-7 h-7 md:w-10 md:h-10" />
+          {cart.length ? (
+            <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full dark:bg-gray-700">
+              {cart.length}
+            </span>
+          ) : null}
+        </div>
+        <span className="hidden hover:underline md:block">{t('navbar', 'cart')}</span>
       </button>
 
       {bagIsOpen && (
