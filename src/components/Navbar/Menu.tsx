@@ -43,11 +43,13 @@ export default function Menu() {
     };
   }, [menuIsOpen]);
 
-  if (menuIsOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [menuIsOpen]);
 
   return (
     <div ref={menuDiv}>
