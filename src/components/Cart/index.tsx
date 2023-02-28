@@ -35,6 +35,13 @@ export default function Cart() {
     (accumulator, currentValue) => accumulator + currentValue.quantity,
     0,
   );
+  useEffect(() => {
+    if (bagIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [bagIsOpen]);
 
   return (
     <div ref={carDiv} className="flex items-center">
@@ -58,32 +65,38 @@ export default function Cart() {
       </button>
 
       {bagIsOpen && (
-        <div
-          id="cart"
-          className="text-black fixed top-16 right-2 bg-white p-3 shadow-lg w-72 sm:w-80"
-        >
-          <div className="overflow-y-scroll w-80 h-80">
-            {cart.map((product, index) => {
-              return <ProductCart key={product.id} index={index} product={product} />;
-            })}
-          </div>
-          <div className="flex justify-between items-center">
-            <div className="mt-3 flex flex-col">
-              <span className="text-xs">
-                {cartTotalItems} item{cart.length === 1 ? '' : 's'}
-              </span>
-              <span className="font-medium mt-1">
-                ${cartTotal < 1 ? '0.00' : cartTotal.toFixed(2)}
-              </span>
+        <>
+          <div
+            id="cart"
+            className="text-black fixed z-50 top-16 right-2 bg-white p-3 shadow-lg w-72 sm:w-80"
+          >
+            <div className="overflow-y-scroll w-80 h-80">
+              {cart.map((product, index) => {
+                return <ProductCart key={product.id} index={index} product={product} />;
+              })}
             </div>
-            <Link
-              href="/checkout"
-              className="text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-            >
-              Check out
-            </Link>
+            <div className="flex justify-between items-center">
+              <div className="mt-3 flex flex-col">
+                <span className="text-xs">
+                  {cartTotalItems} item{cart.length === 1 ? '' : 's'}
+                </span>
+                <span className="font-medium mt-1">
+                  ${cartTotal < 1 ? '0.00' : cartTotal.toFixed(2)}
+                </span>
+              </div>
+              <Link
+                href="/checkout"
+                className="text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+              >
+                Check out
+              </Link>
+            </div>
           </div>
-        </div>
+          <div
+            onClick={() => setBagIsOpen(!bagIsOpen)}
+            className="opacity-25 fixed inset-0 z-40 bg-black"
+          ></div>
+        </>
       )}
     </div>
   );

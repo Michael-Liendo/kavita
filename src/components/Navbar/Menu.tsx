@@ -43,6 +43,14 @@ export default function Menu() {
     };
   }, [menuIsOpen]);
 
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [menuIsOpen]);
+
   return (
     <div ref={menuDiv}>
       <button onClick={() => setMenuIsOpen(!menuIsOpen)} className="flex p-1 items-center text-xl">
