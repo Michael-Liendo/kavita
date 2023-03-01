@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Footer from './Footer';
 import Navbar from './Navbar/Navbar';
@@ -50,6 +52,17 @@ export default function Layout({
       <Navbar />
       <main className="mx-4 sm:mx-10 lg:mx-28 xl:mx-16 2xl:mx-60 min-h-[82vh]">{children}</main>
       <Footer />
+      <ToastContainer
+        position="top-left"
+        autoClose={1200}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }
