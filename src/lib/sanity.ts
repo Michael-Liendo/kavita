@@ -25,6 +25,13 @@ export async function getPublishedMainBanners() {
   return banners[0];
 }
 
+export async function getPublishedNewArrivalsProducts() {
+  const newArrivals = await client.fetch(`*[_type == "newArrivals"]`);
+  const ids = newArrivals[0].products.map((product: { _ref: string }) => product._ref);
+  const newArrivalsProducts = await client.fetch(`*[_id in $ids]`, { ids });
+  return newArrivalsProducts;
+}
+
 type ProductWeekSelection = {
   _key: string;
   _ref: string;
