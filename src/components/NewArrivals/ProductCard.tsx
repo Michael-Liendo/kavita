@@ -1,13 +1,14 @@
 import { useCart } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addProduct } = useCart();
 
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#" className="flex justify-center">
+      <Link href={`/product/${product._id}`} className="flex justify-center">
         <Image
           className="p-8 object-cover h-80 rounded-t-lg"
           src={product.images[0]}
@@ -15,16 +16,16 @@ export default function ProductCard({ product }: { product: Product }) {
           width={900}
           height={900}
         />
-      </a>
+      </Link>
       <div className="px-5 pb-5">
-        <a href="#">
+        <Link href={`/product/${product._id}`}>
           <h5
             title={product.title}
             className="text-xl font-semibold truncate tracking-tight text-gray-900 dark:text-white"
           >
             {product.title}
           </h5>
-        </a>
+        </Link>
 
         <div className="flex mt-5 items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${product.price}</span>
