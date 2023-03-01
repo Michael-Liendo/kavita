@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import NewArrivals from '@/components/NewArrivals';
-import { getPublishedMainBanners, getPublishedWeekProductsSelections } from '@/lib/sanity';
+import { getPublishedMainBanners, getPublishedWeekProductsSelections } from '@/lib/sanityFunctions';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
 import Link from 'next/link';

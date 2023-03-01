@@ -1,4 +1,4 @@
-import { getPublishedNewArrivalsProducts } from '@/lib/sanity';
+import { getPublishedNewArrivalsProducts } from '@/lib/sanityFunctions';
 import { Product } from '@/utils/types/products';
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
