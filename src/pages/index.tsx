@@ -1,35 +1,29 @@
 import Layout from '@/components/Layout';
 import NewArrivals from '@/components/NewArrivals';
-import { useClient } from '@/store/ShopStore';
+import { getPublishedMainBanners, getPublishedWeekProductsSelections } from '@/lib/sanityFunctions';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const { client } = useClient();
-
   const [banners, setBanners] = useState<MainBanners>();
   const [productWeekSelection, setProductWeekSelection] = useState([]);
 
   useEffect(() => {
-    async function getProductsWeekSelection(ids: string[]) {
-      const weekProducts = await client.fetch(`*[_id in $ids]`, { ids });
-      setProductWeekSelection(weekProducts);
-    }
     async function getBanners() {
-      const banners = await client.fetch(`*[_type == "main_banners"]`);
-      setBanners(banners[0]);
+      const banners = await getPublishedMainBanners();
+      setBanners(banners);
     }
-    async function getWeekSelection() {
-      const week = await client.fetch(`*[_type == "productWeekSelection"]`);
-      getProductsWeekSelection(
-        week[0].products.map((product: ProductWeekSelection) => product._ref),
-      );
+
+    async function getWeekProductsSelections() {
+      const products = await getPublishedWeekProductsSelections();
+      setProductWeekSelection(products);
     }
-    getWeekSelection();
+
+    getWeekProductsSelections();
     getBanners();
-  }, [client]);
+  }, []);
 
   return (
     <Layout title="Kevita | Home Page">
@@ -127,10 +121,4 @@ type MainBanners = {
     }[];
   };
   _updatedAt: string;
-};
-
-type ProductWeekSelection = {
-  _key: string;
-  _ref: string;
-  _type: 'reference';
 };

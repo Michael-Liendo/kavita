@@ -1,18 +1,8 @@
 import { CartState } from '@/utils/types/cartState';
 import { Product } from '@/utils/types/products';
-import { createClient } from 'next-sanity';
 import { toast } from 'react-toastify';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-export const useClient = create(() => ({
-  client: createClient({
-    projectId: process.env.SANITY_PROJECT_ID,
-    dataset: 'production',
-    apiVersion: '2022-03-25',
-    useCdn: false,
-  }),
-}));
 
 export const useCart = create(
   persist<CartState>(
