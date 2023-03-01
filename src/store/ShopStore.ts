@@ -1,6 +1,7 @@
 import { CartState } from '@/utils/types/cartState';
 import { Product } from '@/utils/types/products';
 import { createClient } from 'next-sanity';
+import { toast } from 'react-toastify';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -26,6 +27,8 @@ export const useCart = create(
       addProduct: (product: Product) => {
         const { cart } = get();
 
+        toast.success(`${product.title.slice(0, 20)} added to cart`);
+
         const index = cart.findIndex(({ _id }: { _id: string }) => _id === product._id);
 
         if (index < 0) {
@@ -37,6 +40,8 @@ export const useCart = create(
       },
       removeProduct: (productIndex: number) => {
         const { cart } = get();
+
+        toast.info(`${cart[productIndex].title.slice(0, 15)} removed from cart`);
         set({
           cart: cart.filter((value, index) => index !== productIndex),
         });
