@@ -1,3 +1,4 @@
+import { getPublishedCategories } from '@/lib/sanity';
 import { useClient } from '@/store/ShopStore';
 import useTranslation from '@/utils/i18n/hooks';
 import { useEffect, useRef, useState } from 'react';
@@ -19,15 +20,13 @@ export default function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  const { client } = useClient();
-
   useEffect(() => {
     async function getCategories() {
-      const categories = await client.fetch(`*[_type == "category"]`);
-      setCategories(categories);
+      const getCategories = await getPublishedCategories();
+      setCategories(getCategories);
     }
     getCategories();
-  }, [client]);
+  }, []);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
