@@ -1,15 +1,12 @@
 import Layout from '@/components/Layout';
 import NewArrivals from '@/components/NewArrivals';
 import { getPublishedMainBanners, getPublishedWeekProductsSelections } from '@/lib/sanity';
-import { useClient } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const { client } = useClient();
-
   const [banners, setBanners] = useState<MainBanners>();
   const [productWeekSelection, setProductWeekSelection] = useState([]);
 
@@ -26,7 +23,7 @@ export default function Home() {
 
     getWeekProductsSelections();
     getBanners();
-  }, [client]);
+  }, []);
 
   return (
     <Layout title="Kevita | Home Page">

@@ -1,5 +1,4 @@
 import { getPublishedCategories } from '@/lib/sanity';
-import { useClient } from '@/store/ShopStore';
 import useTranslation from '@/utils/i18n/hooks';
 import { useEffect, useRef, useState } from 'react';
 import Bars3 from '../Icons/Bars3';

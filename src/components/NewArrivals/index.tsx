@@ -1,11 +1,9 @@
 import { getPublishedNewArrivalsProducts } from '@/lib/sanity';
-import { useClient } from '@/store/ShopStore';
 import { Product } from '@/utils/types/products';
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
 export default function NewArrivals() {
-  const { client } = useClient();
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -14,7 +12,7 @@ export default function NewArrivals() {
       setProducts(products);
     }
     getProducts();
-  }, [client]);
+  }, []);
   return (
     <div className="mt-7">
       <h3 className="text-2xl mb-3">New Arrivals</h3>
