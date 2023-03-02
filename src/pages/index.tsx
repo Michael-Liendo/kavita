@@ -34,7 +34,7 @@ export default function Home() {
               <Image
                 className="rounded-lg h-full object-cover"
                 src={banners?.head_main_banners?.banners_mobile[0].banner || ''}
-                alt="s"
+                alt="Kavita banner"
                 width="1000"
                 height="1000"
               />
@@ -47,7 +47,7 @@ export default function Home() {
               <Image
                 className="rounded-lg w-full h-full object-cover"
                 src={banners?.head_main_banners?.banners_computer[0].banner}
-                alt="s"
+                alt="Kavita banner"
                 width="1000"
                 height="1000"
               />
@@ -58,7 +58,12 @@ export default function Home() {
               <h3 className="mb-3 text-xl font-medium">Week selection</h3>
               <div className="flex space-x-3 md:space-x-7 lg:space-x-5 xl:space-x-7">
                 {productWeekSelection?.map((product: Product) => (
-                  <Link href={`/product/${product._id}`} className="w-[22%]" key={product._id}>
+                  <Link
+                    title={product.title}
+                    href={`/product/${product._id}`}
+                    className="w-[22%]"
+                    key={product._id}
+                  >
                     <Image
                       className="rounded-md h-[75%] mb-2 object-cover"
                       alt={product.description}
