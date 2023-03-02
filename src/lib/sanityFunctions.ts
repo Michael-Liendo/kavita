@@ -48,6 +48,18 @@ export async function getPublishedRandomProducts(number: number) {
   return products.sort(() => Math.random() - 0.5).slice(0, number);
 }
 
+export async function getPublishedProductsByTitle(searchTerm: string) {
+  const product = await client.fetch(
+    `*[_type == "products" && title match $searchTerm]{
+    title,
+    _id
+  }`,
+    { searchTerm },
+  );
+
+  return product;
+}
+
 type ProductWeekSelection = {
   _key: string;
   _ref: string;
