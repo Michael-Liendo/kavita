@@ -18,11 +18,34 @@ export async function getPublishedMainBanners() {
   return banners[0];
 }
 
+// TODO: one request
 export async function getPublishedNewArrivalsProducts() {
   const newArrivals = await client.fetch(`*[_type == "newArrivals"]`);
   const ids = newArrivals[0].products.map((product: { _ref: string }) => product._ref);
   const newArrivalsProducts = await client.fetch(`*[_id in $ids]`, { ids });
   return newArrivalsProducts;
+}
+
+export async function getSingleProduct(_id: string) {
+  const product = await client.fetch(
+    `*[_type == "products" && _id == $_id][0] {
+    title,
+    product,
+    _id,
+    price,
+    description,
+    images,
+    "category": *[_type == "category" && _id == ^.category._ref][0]
+  }`,
+    { _id },
+  );
+  return product;
+}
+
+export async function getPublishedRandomProducts(number: number) {
+  const products = await client.fetch(`*[_type == "products"]`);
+
+  return products.sort(() => Math.random() - 0.5).slice(0, number);
 }
 
 type ProductWeekSelection = {
