@@ -8,12 +8,6 @@ export const useCart = create(
   persist<CartState>(
     (set, get) => ({
       cart: [],
-      cartAnimated: false,
-      setCartAnimated: (value: boolean) => {
-        set(() => ({
-          cartAnimated: value,
-        }));
-      },
       addProduct: (product: Product) => {
         const { cart } = get();
 
