@@ -33,7 +33,7 @@ export default function Home() {
             {banners && (
               <Image
                 className="rounded-lg h-full object-cover"
-                src={banners?.head_main_banners?.banners_mobile[0].banner || ''}
+                src={banners?.head_main_banners?.banners_mobile[0].banner}
                 alt="Kavita banner"
                 width="1000"
                 height="1000"
@@ -43,7 +43,10 @@ export default function Home() {
         </div>
         <div className="hidden md:flex flex-row mt-6 space-x-5">
           {banners && (
-            <Link href={banners.head_main_banners.banners_computer[0].link} className="h-53">
+            <Link
+              href={banners.head_main_banners.banners_computer[0].link}
+              className="max-h-[58vh]"
+            >
               <Image
                 className="rounded-lg w-full h-full object-cover"
                 src={banners?.head_main_banners?.banners_computer[0].banner}
@@ -65,7 +68,7 @@ export default function Home() {
                     key={product._id}
                   >
                     <Image
-                      className="rounded-md h-[75%] mb-2 object-cover"
+                      className="rounded-md h-[20vh] mb-2 object-cover"
                       alt={product.description}
                       src={product.images[0]}
                       width={208}
@@ -80,7 +83,7 @@ export default function Home() {
               {banners && (
                 <Link href={banners.head_main_banners.banners_computer[1].link} className="mr-1">
                   <Image
-                    className="rounded-lg w-full h-full object-cover"
+                    className="rounded-lg w-96 h-full object-cover"
                     src={banners?.head_main_banners?.banners_computer[1].banner}
                     alt={banners?.head_main_banners?.banners_computer[1].link}
                     width="1000"
@@ -91,7 +94,7 @@ export default function Home() {
               {banners && (
                 <Link href={banners.head_main_banners.banners_computer[2].link} className="ml-1">
                   <Image
-                    className="rounded-sm w-full h-full object-cover"
+                    className="rounded-sm w-96 h-full object-cover"
                     src={banners?.head_main_banners?.banners_computer[2].banner}
                     alt={banners?.head_main_banners?.banners_computer[2].link}
                     width="1000"

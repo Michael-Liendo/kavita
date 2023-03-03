@@ -60,7 +60,7 @@ export default function Cart() {
         <div className="flex -space-x-3 ">
           <ShoppingCart className="text-white w-7 h-7 md:w-10 md:h-10" />
           {useCartState.length ? (
-            <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full dark:bg-gray-700">
+            <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full">
               {useCartState.length}
             </span>
           ) : null}
