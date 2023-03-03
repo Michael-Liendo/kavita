@@ -45,7 +45,7 @@ export default function Home() {
           {banners && (
             <Link
               href={banners.head_main_banners.banners_computer[0].link}
-              className="max-h-[58vh]"
+              className="lg:max-h-[68vh] 2xl:max-h-[58vh]"
             >
               <Image
                 className="rounded-lg w-full h-full object-cover"
@@ -81,7 +81,10 @@ export default function Home() {
             </div>
             <div className="hidden sm:flex h-72 mt-3">
               {banners && (
-                <Link href={banners.head_main_banners.banners_computer[1].link} className="mr-1">
+                <Link
+                  href={banners.head_main_banners.banners_computer[1].link}
+                  className="mr-1 max-h-[40vh]"
+                >
                   <Image
                     className="rounded-lg w-96 h-full object-cover"
                     src={banners?.head_main_banners?.banners_computer[1].banner}
@@ -92,7 +95,10 @@ export default function Home() {
                 </Link>
               )}
               {banners && (
-                <Link href={banners.head_main_banners.banners_computer[2].link} className="ml-1">
+                <Link
+                  href={banners.head_main_banners.banners_computer[2].link}
+                  className="ml-1 max-h-[40vh]"
+                >
                   <Image
                     className="rounded-sm w-96 h-full object-cover"
                     src={banners?.head_main_banners?.banners_computer[2].banner}
