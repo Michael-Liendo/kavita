@@ -30,7 +30,7 @@ export default function Checkout() {
                 href="/"
                 className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
               >
-                Home
+                Inicio
               </Link>
             </div>
           </li>
@@ -43,7 +43,7 @@ export default function Checkout() {
                   href="/checkout"
                   className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                 >
-                  Checkout
+                  Comprueba el carrito
                 </Link>
               </div>
             </div>
@@ -53,8 +53,10 @@ export default function Checkout() {
 
       <div className=" grid lg:grid-cols-2">
         <div className="px-4 pt-8">
-          <p className="text-xl font-medium">Order Summary</p>
-          <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
+          <p className="text-xl font-medium">Resumen del pedido</p>
+          <p className="text-gray-400">
+            Compruebe sus artículos. Y seleccione un método de envío adecuado.
+          </p>
           <div className="mt-8 space-y-3 rounded-lg overflow-y-scroll max-h-96 border bg-white px-2 py-4 sm:px-6">
             {cartState.length > 0 ? (
               cartState.map((product) => <ProductCheckout product={product} key={product._id} />)
@@ -64,13 +66,13 @@ export default function Checkout() {
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 >
-                  Add products to the cartState
+                  Añadir productos al carrito
                 </button>
               </Link>
             )}
           </div>
 
-          <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+          <p className="mt-8 text-lg font-medium">Métodos de envío</p>
           <form className="mt-5 grid gap-6">
             <div className="relative">
               <input
@@ -93,8 +95,8 @@ export default function Checkout() {
                   height={56}
                 />
                 <div className="ml-5">
-                  <span className="mt-2 font-semibold">Fedex Delivery</span>
-                  <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+                  <span className="mt-2 font-semibold">Fedex envío</span>
+                  <p className="text-slate-500 text-sm leading-6">Entrega: 2-4 días</p>
                 </div>
               </label>
             </div>
@@ -120,15 +122,15 @@ export default function Checkout() {
                 />
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">UPS</span>
-                  <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+                  <p className="text-slate-500 text-sm leading-6">Entrega: 2-4 días</p>
                 </div>
               </label>
             </div>
           </form>
         </div>
         <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-          <p className="text-xl font-medium">Payment Details</p>
-          <p className="text-gray-400">Complete your order by providing your payment details.</p>
+          <p className="text-xl font-medium">Detalles de pago</p>
+          <p className="text-gray-400">Complete su pedido facilitando sus datos de pago.</p>
           <div className="">
             <label htmlFor="email" className="mt-4 mb-2 block text-sm font-medium">
               Email
@@ -159,7 +161,7 @@ export default function Checkout() {
               </div>
             </div>
             <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">
-              Card Holder
+              Nombre de propietario
             </label>
             <div className="relative">
               <input
@@ -167,7 +169,7 @@ export default function Checkout() {
                 id="card-holder"
                 name="card-holder"
                 className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Your full name here"
+                placeholder="Joe Doe"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                 <svg
@@ -187,7 +189,7 @@ export default function Checkout() {
               </div>
             </div>
             <label htmlFor="card-no" className="mt-4 mb-2 block text-sm font-medium">
-              Card Details
+              Detalles de la tarjeta
             </label>
             <div className="flex">
               <div className="relative w-7/12 flex-shrink-0">
@@ -226,7 +228,7 @@ export default function Checkout() {
               />
             </div>
             <label htmlFor="billing-address" className="mt-4 mb-2 block text-sm font-medium">
-              Billing Address
+              Dirección de facturación
             </label>
             <div className="flex flex-col sm:flex-row">
               <div className="relative flex-shrink-0 sm:w-7/12">
@@ -251,7 +253,7 @@ export default function Checkout() {
                 name="billing-state"
                 className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               >
-                <option value="State">State</option>
+                <option value="State">Estado</option>
               </select>
               <input
                 type="text"
@@ -274,7 +276,7 @@ export default function Checkout() {
             </div>
           </div>
           <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
-            Place Order
+            Realizar pedido
           </button>
         </div>
       </div>

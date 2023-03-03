@@ -31,7 +31,7 @@ export default function ProductPage({ product }: { product: Product }) {
                   href="/"
                   className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                 >
-                  Home
+                  Inicio
                 </Link>
               </div>
             </li>
@@ -44,7 +44,7 @@ export default function ProductPage({ product }: { product: Product }) {
                     href="/product"
                     className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                   >
-                    Products
+                    Productos
                   </Link>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function ProductPage({ product }: { product: Product }) {
                     d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                   />
                 </svg>
-                Add to cart
+                Añadir al carrito
               </button>
             </div>
 
@@ -155,7 +155,7 @@ export default function ProductPage({ product }: { product: Product }) {
                     className=""
                   ></path>
                 </svg>
-                Shipping worldwide
+                Envío
               </li>
             </ul>
           </div>
@@ -164,10 +164,10 @@ export default function ProductPage({ product }: { product: Product }) {
             <div className="border-b border-gray-300">
               <nav className="flex gap-4">
                 <a
-                  title="Description"
+                  title="Descripción"
                   className="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
                 >
-                  Description
+                  Descripción
                 </a>
               </nav>
             </div>
@@ -178,7 +178,7 @@ export default function ProductPage({ product }: { product: Product }) {
       </div>
       <div className="mb-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Customers also purchased
+          Clientes que también compraron
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -187,7 +187,7 @@ export default function ProductPage({ product }: { product: Product }) {
               <RandomProductCard key={index} product={product} />
             ))
           ) : (
-            <p>Loading</p>
+            <p>Cargando</p>
           )}
         </div>
       </div>

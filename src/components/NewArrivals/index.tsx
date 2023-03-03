@@ -15,7 +15,7 @@ export default function NewArrivals() {
   }, []);
   return (
     <div className="mt-7">
-      <h3 className="text-2xl mb-3">New Arrivals</h3>
+      <h3 className="text-2xl mb-3">Nuevos productos</h3>
       <hr />
       <div className="mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product: Product) => (

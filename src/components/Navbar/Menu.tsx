@@ -63,7 +63,7 @@ export default function Menu() {
         <>
           <div className="fixed z-50 p-4 text-black w-80 bg-white overflow-y-auto">
             <div>
-              <h2 className="text-xl mb-3 font-medium">{t('navbar', 'buyByDepartment')}</h2>
+              <h2 className="text-xl mb-3 font-medium">Comprar por categoría</h2>
               <ul>
                 {categories.map((category: Category) => (
                   <CategoryListItem key={category._id} category={category} />
