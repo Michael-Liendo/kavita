@@ -53,9 +53,9 @@ export default function Menu() {
     <div ref={menuDiv}>
       <button onClick={() => setMenuIsOpen(!menuIsOpen)} className="flex p-1 items-center text-xl">
         {menuIsOpen ? (
-          <XMark className="text-white w-9 h-9" />
+          <XMark className="text-white w-7 h-7  sm:w-9 sm:h-9" />
         ) : (
-          <Bars3 className="text-white w-9 h-9" />
+          <Bars3 className="text-white w-7 h-7 sm:w-9 sm:h-9" />
         )}
         <span className="hidden md:block hover:underline">Menu</span>
       </button>

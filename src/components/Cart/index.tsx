@@ -60,7 +60,7 @@ export default function Cart() {
         <div className="flex -space-x-3 ">
           <ShoppingCart className="text-white w-7 h-7 md:w-10 md:h-10" />
           {useCartState.length ? (
-            <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full dark:bg-gray-700">
+            <span className="flex items-center justify-center text-sm w-4 h-4 md:w-5 md:h-5 bg-green-600 rounded-full">
               {useCartState.length}
             </span>
           ) : null}
@@ -75,9 +75,16 @@ export default function Cart() {
             className="text-black fixed z-50 top-16 right-2 bg-white p-3 shadow-lg w-72 sm:w-80"
           >
             <div className="overflow-y-scroll w-80 h-80">
-              {useCartState.map((product: Product, index: number) => (
-                <ProductCart key={product._id} index={index} product={product} />
-              ))}
+              {useCartState.length > 0 ? (
+                useCartState.map((product: Product, index: number) => (
+                  <ProductCart key={product._id} index={index} product={product} />
+                ))
+              ) : (
+                <div className="h-full flex flex-col justify-center items-center">
+                  <span className="font-medium">El carrito de compra está vacio</span>
+                  <span>Añade lo que te guste!</span>
+                </div>
+              )}
             </div>
             <div className="flex justify-between items-center">
               <div className="mt-3 flex flex-col">
