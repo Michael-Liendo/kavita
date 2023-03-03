@@ -11,7 +11,7 @@ export const useCart = create(
       addProduct: (product: Product) => {
         const { cart } = get();
 
-        toast.success(`${product.title.slice(0, 20)} added to cart`);
+        toast.success(`${product.title.slice(0, 20)} añadido al carrito`);
 
         const index = cart.findIndex(({ _id }: { _id: string }) => _id === product._id);
 
@@ -25,7 +25,7 @@ export const useCart = create(
       removeProduct: (productIndex: number) => {
         const { cart } = get();
 
-        toast.info(`${cart[productIndex].title.slice(0, 15)} removed from cart`);
+        toast.info(`${cart[productIndex].title.slice(0, 15)} se quitó del carrito`);
         set({
           cart: cart.filter((value, index) => index !== productIndex),
         });

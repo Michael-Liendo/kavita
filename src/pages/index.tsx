@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout title="Kevita | Home Page">
+    <Layout title="Kevita | Inicio">
       <div>
         <div className="flex md:hidden mt-4">
           <a href="#" className="bg-slate-400 h-72">
@@ -58,7 +58,7 @@ export default function Home() {
           )}
           <div className="flex-col max-w-[50%] h-full">
             <div className="w-full h-25">
-              <h3 className="mb-3 text-xl font-medium">Week selection</h3>
+              <h3 className="mb-3 text-xl font-medium">Selección semanal</h3>
               <div className="flex space-x-3 md:space-x-7 lg:space-x-5 xl:space-x-7">
                 {productWeekSelection?.map((product: Product) => (
                   <Link

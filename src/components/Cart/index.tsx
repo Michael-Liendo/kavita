@@ -65,7 +65,7 @@ export default function Cart() {
             </span>
           ) : null}
         </div>
-        <span className="hidden hover:underline md:block">{t('navbar', 'cart')}</span>
+        <span className="hidden hover:underline md:block">Carrito</span>
       </button>
 
       {bagIsOpen && (
@@ -99,7 +99,7 @@ export default function Cart() {
                 href="/checkout"
                 className="text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
               >
-                Check out
+                Comprueba
               </Link>
             </div>
           </div>

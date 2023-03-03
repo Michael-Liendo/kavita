@@ -14,7 +14,7 @@ export default function ProductCheckout({ product }: { product: Product }) {
       <div className="flex w-full flex-col px-4 py-4">
         <span className="font-semibold">{product.title}</span>
         <p className="text-lg font-bold">${product.price}</p>
-        <span>Quantity: {product.quantity}</span>
+        <span>Cantidad: {product.quantity}</span>
       </div>
     </div>
   );

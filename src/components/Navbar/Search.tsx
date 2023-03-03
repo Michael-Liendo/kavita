@@ -37,7 +37,7 @@ export default function Search() {
         onChange={onChangeHandler}
         type="search"
         className="block w-full md:w-[30vw] py-1.5 px-1 md:py-3 md:px-4 text-sm placeholder-black text-gray-900 rounded-l-md bg-gray-50"
-        placeholder="Find Products..."
+        placeholder="Busca productos..."
         required
       />
       {suggestIsOpen && (
@@ -50,7 +50,7 @@ export default function Search() {
                 </li>
               ))
             ) : (
-              <li>Find products...</li>
+              <li>Buscando productos...</li>
             )}
           </ul>
         </div>
