@@ -7,17 +7,19 @@ describe('useCart', () => {
     _id: 'ID1',
     title: 'Product 1',
     price: 10,
-    description: '',
+    description: [],
     images: [],
-    category: { id: 1, image: '', name: 'text' },
+    quantity: 0,
+    category: { _id: 'dsf', image: '', name: 'text' },
   };
   const product2: Product = {
     _id: 'ID2',
     title: 'Product 2',
     price: 20,
-    description: '',
+    description: [],
+    quantity: 0,
     images: [],
-    category: { id: 2, image: '', name: 'sea' },
+    category: { _id: 'fgsd', image: '', name: 'sea' },
   };
 
   afterEach(() => {
