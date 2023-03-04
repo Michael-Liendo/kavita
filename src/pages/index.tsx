@@ -69,7 +69,7 @@ export default function Home() {
                   >
                     <Image
                       className="rounded-md h-[20vh] mb-2 object-cover"
-                      alt={product.description}
+                      alt={product.title}
                       src={product.images[0]}
                       width={208}
                       height={208}
