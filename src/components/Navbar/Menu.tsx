@@ -1,5 +1,5 @@
 import { getPublishedCategories } from '@/lib/sanityFunctions';
-import useTranslation from '@/utils/i18n/hooks';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import Bars3 from '../Icons/Bars3';
 import XMark from '../Icons/XMark';
@@ -8,13 +8,14 @@ function CategoryListItem({ category }: { category: Category }) {
   return (
     <>
       <hr />
-      <li className="my-2 truncate">{category.name}</li>
+      <Link href={`/category/${category._id}`}>
+        <li className="py-1.5 truncate">{category.name}</li>
+      </Link>
     </>
   );
 }
 
 export default function Menu() {
-  const t = useTranslation;
   const menuDiv = useRef<HTMLDivElement>(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
