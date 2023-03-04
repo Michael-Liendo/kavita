@@ -6,6 +6,7 @@ import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { PortableText } from '@portabletext/react';
 
 export default function ProductPage({ product }: { product: Product }) {
   const { addProduct } = useCart();
@@ -172,7 +173,9 @@ export default function ProductPage({ product }: { product: Product }) {
               </nav>
             </div>
 
-            <div className="mt-8 flow-root sm:mt-12">{product.description}</div>
+            <div className="mt-4 flow-root sm:mt-7">
+              <PortableText value={product.description} />
+            </div>
           </div>
         </div>
       </div>

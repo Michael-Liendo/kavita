@@ -21,7 +21,7 @@ export default function CategoryPage() {
   }, [_id]);
 
   return (
-    <Layout title="Category">
+    <Layout title={`${products[0]?.category.name ?? ''} | Kavita`}>
       <h1 className="mt-5 text-4xl">{products[0]?.category.name ?? ''}</h1>
       <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.length > 0 ? (
