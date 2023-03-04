@@ -60,6 +60,26 @@ export async function getPublishedProductsByTitle(searchTerm: string) {
   return product;
 }
 
+export async function getProductsWithCategory(categoryID: string) {
+  if (!categoryID) return [];
+  const products = await client.fetch(
+    `*[_type == "products" && category._ref match $categoryID]{
+    title,
+    product,
+    _id,
+    price,
+    description,
+    images,
+    "category": *[_type == "category" && _id == ^.category._ref][0]
+  }`,
+    {
+      categoryID,
+    },
+  );
+
+  return products;
+}
+
 type ProductWeekSelection = {
   _key: string;
   _ref: string;
