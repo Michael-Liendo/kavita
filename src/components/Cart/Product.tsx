@@ -20,9 +20,17 @@ export default function ProductCart({ product, index }: { product: Product; inde
 
       <div className="flex justify-between w-full ml-3">
         <div className="flex flex-col">
-          <span title={product.title} className="text-xs w-40 truncate text-gray-500">
-            {product.title}
-          </span>
+          <div className="flex justify-between">
+            <span title={product.title} className="text-xs w-40 truncate text-gray-500">
+              {product.title}
+            </span>
+            <i
+              onClick={() => removeProduct(index)}
+              className="z-30 py-1.5 px-3  hover:cursor-pointer"
+            >
+              <Trash />
+            </i>
+          </div>
           <span className="text-sm">${product.price}</span>
           <div className="flex flex-row h-8 w-1/2 rounded-lg relative bg-transparent mt-1">
             <button
@@ -43,9 +51,6 @@ export default function ProductCart({ product, index }: { product: Product; inde
           </div>
         </div>
       </div>
-      <i onClick={() => removeProduct(index)} className="py-1.5 px-3 hover:cursor-pointer">
-        <Trash />
-      </i>
     </div>
   );
 }
