@@ -1,4 +1,4 @@
-import { getPublishedProductsByTitle, getPublishedRandomProducts } from '@/lib/sanityFunctions';
+import { getPublishedProducts } from '@/lib/sanityFunctions';
 import { Product } from '@/utils/types/products';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -8,12 +8,16 @@ export default function Search() {
   const form = useRef<HTMLFormElement>(null);
 
   const [suggestIsOpen, setSuggestIsOpen] = useState(false);
-  const [findResult, setFindResult] = useState<Product[]>([]);
+  const [searchTerm, setSearchTem] = useState('');
+  const [products, setProducts] = useState<Product[]>([]);
 
-  async function onChangeHandler(e: any) {
-    const products = await getPublishedProductsByTitle(e.target.value);
-    setFindResult([...products]);
-  }
+  useEffect(() => {
+    async function getProducts() {
+      const getProducts = await getPublishedProducts();
+      setProducts(getProducts);
+    }
+    getProducts();
+  }, []);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
@@ -33,7 +37,7 @@ export default function Search() {
   return (
     <form ref={form} className="flex relative md:ml-14">
       <input
-        onChange={onChangeHandler}
+        onChange={(event) => setSearchTem(event.target.value)}
         type="search"
         className="block w-full md:w-[30vw] py-1.5 px-1 md:py-3 md:px-4 text-sm placeholder-black text-gray-900 rounded-l-md bg-gray-50"
         placeholder="Busca productos..."
@@ -42,15 +46,18 @@ export default function Search() {
       {suggestIsOpen && (
         <div className="py-2 rounded px-3 absolute text-black bg-white w-full top-8 md:top-10">
           <ul className="truncate">
-            {findResult.length >= 1 ? (
-              findResult.map(({ title, _id }, index) => (
+            {products
+              .filter((product) => {
+                if (searchTerm == '') return product;
+                else if (product.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                  return product;
+              })
+              .splice(0, 5)
+              .map(({ title, _id }, index) => (
                 <li className="my-2" key={index} title={title}>
                   <Link href={`/product/${_id}`}>{title}</Link>
                 </li>
-              ))
-            ) : (
-              <li>Buscando productos...</li>
-            )}
+              ))}
           </ul>
         </div>
       )}

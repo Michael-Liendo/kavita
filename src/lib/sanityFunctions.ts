@@ -49,7 +49,7 @@ export async function getPublishedRandomProducts(number: number) {
   return products.sort(() => Math.random() - 0.5).slice(0, number);
 }
 
-export async function getPublishedProductsByTitle(searchTerm: string) {
+export async function getPublishedProducts() {
   const getProducts = await client.fetch(
     `*[_type == "products"]{
     title,
@@ -57,11 +57,7 @@ export async function getPublishedProductsByTitle(searchTerm: string) {
   }`,
   );
 
-  const products = getProducts.filter((product: Product) =>
-    product.title.toLocaleLowerCase().includes(searchTerm),
-  );
-
-  return products;
+  return getProducts;
 }
 
 export async function getProductsWithCategory(categoryID: string) {
