@@ -12,8 +12,7 @@ export default function Search() {
 
   async function onChangeHandler(e: any) {
     const products = await getPublishedProductsByTitle(e.target.value);
-    const randomsProducts = await getPublishedRandomProducts(4);
-    setFindResult([...products, ...randomsProducts]);
+    setFindResult([...products]);
   }
 
   useEffect(() => {

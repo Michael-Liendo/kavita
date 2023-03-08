@@ -1,3 +1,4 @@
+import { Product } from '@/utils/types/products';
 import client from './sanityClient';
 
 export async function getPublishedCategories() {
@@ -49,15 +50,18 @@ export async function getPublishedRandomProducts(number: number) {
 }
 
 export async function getPublishedProductsByTitle(searchTerm: string) {
-  const product = await client.fetch(
-    `*[_type == "products" && title match $searchTerm]{
+  const getProducts = await client.fetch(
+    `*[_type == "products"]{
     title,
     _id
   }`,
-    { searchTerm },
   );
 
-  return product;
+  const products = getProducts.filter((product: Product) =>
+    product.title.toLocaleLowerCase().includes(searchTerm),
+  );
+
+  return products;
 }
 
 export async function getProductsWithCategory(categoryID: string) {
