@@ -1,4 +1,4 @@
-import { getPublishedProductsByTitle, getPublishedRandomProducts } from '@/lib/sanityFunctions';
+import { getPublishedProducts } from '@/lib/sanityFunctions';
 import { Product } from '@/utils/types/products';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -9,11 +9,25 @@ export default function Search() {
 
   const [suggestIsOpen, setSuggestIsOpen] = useState(false);
   const [findResult, setFindResult] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  async function onChangeHandler(e: any) {
-    const products = await getPublishedProductsByTitle(e.target.value);
-    setFindResult([...products]);
+  function onChangeHandler(e: any) {
+    setFindResult(() => {
+      if (e.target.value.length > 0)
+        return products.filter((products) =>
+          products.title.toLowerCase().includes(e.target.value.toLowerCase()),
+        );
+      return products.splice(0, 4);
+    });
   }
+
+  useEffect(() => {
+    async function getProducts() {
+      const getProducts = await getPublishedProducts();
+      setProducts(getProducts);
+    }
+    getProducts();
+  }, []);
 
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
