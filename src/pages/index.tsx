@@ -1,3 +1,4 @@
+import Categories from '@/components/categories';
 import Layout from '@/components/Layout';
 import NewArrivals from '@/components/NewArrivals';
 import { getPublishedMainBanners, getPublishedWeekProductsSelections } from '@/lib/sanityFunctions';
@@ -113,6 +114,7 @@ export default function Home() {
         </div>
       </div>
       <NewArrivals />
+      <Categories />
     </Layout>
   );
 }
